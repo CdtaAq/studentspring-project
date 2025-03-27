@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function fetchStudents() {
+            $.ajax({
+                url: "/api/students",
+                type: "GET",
+                success: function (data) {
+                    let tableContent = '';
+                    data.forEach(student => {
+                        tableContent += `
+                            <tr>
+                                <td>${student.id}</td>
+                                <td>${student.name}</td>
+                                <td>${student.age}</td>
+                                <td>${student.gender}</td>
+                                <td>${student.trainer}</td>
+                            </tr>
+                        `;
+                    });
+                    $('#studentTable tbody').html(tableContent);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>STUDENT PAGE</h1>
+    <div>
+        <label for="name">Student Name: </label><input type="text" id="name"><br>
+        <label for="age">Student Age: </label><input type="text" id="age"><br>
+        <label for="gender">Student Gender: </label><input type="text" id="gender"><br>
+        <label for="trainer">Student Trainer: </label><input type="text" id="trainer"><br><br>
+        <button onclick="fetchStudents()">Show All Students</button>
+    </div>
+
+    <h2>Students List</h2>
+    <table id="studentTable" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Trainer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student rows will be inserted here by AJAX -->
+        </tbody>
+    </table>
+</body>
+</html>

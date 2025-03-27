@@ -1,0 +1,21 @@
+studentproject
+├── src
+    ├── main
+        ├── java
+            ├── com
+                ├── example
+                    ├── studentproject
+                        ├── StudentProjectApplication.java
+                        ├── controller
+                            └── StudentController.java
+                        ├── model
+                            └── Student.java
+                        ├── repository
+                            └── StudentRepository.java
+                        ├── service
+                            └── StudentService.java
+                        └── StudentProjectApplication.java
+        ├── resources
+            ├── application.properties
+            └── static
+                └── index.html
